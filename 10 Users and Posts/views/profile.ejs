@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="py-10 bg-zinc-900 text-white h-full w-full text-2xl">
+    <div>
+        <header class=" px-2">
+            <nav class="flex justify-end">
+                <ul>
+                    <a href="/logout" class="hover:scale-125 hover:bg-zinc-700 transition-transform px-2 py-1 rounded">Logout</a>
+                </ul>
+            </nav>
+        </header>
+        <main class="ml-12 my-3 py-10">
+            <h1 class="py-5 text-4xl text-red-600">Profile</h1>
+            <h1 class="text-center">Hello there <%=Array.from(user.username)[0].toUpperCase()%><%= Array.from(user.username).slice(1).join('') %> 👋🏻</h1>
+        </main>
+        <div class="bg-zinc-800 py-2">
+            <h4 class="mt-5 ml-5">Create a new Post</h4>
+            <form action="/createPost" method="post" class="flex gap-5 m-5 text-white">
+                <textarea placeholder="image url" name="url" class="resize-none p-1 rounded-md bg-transparent bg-zinc-900 pt-3 h-14"></textarea>
+                <input type="text" placeholder="Enter caption here!" name="content"
+                    class="p-1 rounded-md bg-transparent bg-zinc-900">
+                <input type="submit" value="Post"
+                    class="text-red-500 cursor-pointer px-2 py-1 hover:bg-zinc-700 rounded-md">
+            </form>
+        </div>
+        <button title="see all your posts" class="ml-5 mt-3 text-red-500 cursor-pointer px-2 py-1 bg-zinc-800 hover:bg-zinc-700 rounded-md "><a
+                href="/myPosts">Your posts</a></button>
+                </div>
+                <div class="posts flex wrap">
+                    <% if(posts.length==0){%>
+                     <h1 class="text-red-500 ml-3 my-6">Upload a post to see it here!</h1>
+                    <%}%>
+                    <% posts.forEach(post=>{ %>
+                            <div class="h-80 w-64 bg-gray-800 rounded hover:scale-110 transition-transform m-6">
+                              <img class="object-cover w-full h-3/4 rounded" src=<%=post.image_url %> alt="image">
+                              <div class="px-2"><%= post.content %></div>
+                              <div class="flex gap-2 text-sm my-4 mx-2 text-blue-500">
+                                <button>
+                                    <% if(post.likes.includes(user._id)){%>
+                                        <a href="/unlike/<%=post._id%>">unlike💟</a><small>(<%=post.likes.length%> Likes)</small>
+                                    <%}else{%>
+                                        <a href="/like/<%=post._id%>">like💗</a><small>(<%=post.likes.length%> Likes)</small>
+                                    <%}%>
+                                </button>
+                                <button><a href="/editPost/<%=post._id%>">Edit</a></button>
+                              <button><a href="/deletePost/<%=post._id%>">Delete</a></button>
+                              </div>
+                            </div>
+                        <% })                %>
+    </div>
+</body>
+
+</html>

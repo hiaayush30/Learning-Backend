@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yo</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="h-full w-full bg-zinc-900 text-white p-10">
+        <nav class="mb-10 flex gap-5">
+            <a class="hover:scale-125 transition-transform text-blue-500" href="/">Add User</a>
+        </nav>
+        <h1 class="text-3xl tracking-tighter mb-3">All Users</h1>
+        <% if(users.length==0){ %>
+            <h2 class="text-zinc-500 text-2xl">No Users added!</h2>
+            <% }else{ %>
+                <div class="users flex gap-3 flex-wrap">
+                    <% users.map((user)=>{ %>
+                        <div class="user w-72 p-4 bg-zinc-800 rounded-lg">
+                            <div class="w-full bg-red-500 h-52 rounded-lg"><img alt=<%=user.name %> src=<%=
+                                    user.imageurl %> class="w-full h-full object-contain"></div>
+                            <h3 class="text-xl tracking-tighter">
+                                <%= user.name %>
+                            </h3>
+                            <h5 class="text-zinc-400">
+                                <%= user.email %>
+                            </h5>
+                            <div class="flex gap-3 mt-10">
+                                <a class="text-zinc-500" href="/edit/<%= user._id%>">Edit</a>
+                                <a class="text-red-500" href="/delete/<%= user._id %>">Delete</a>
+                            </div>
+                        </div>
+                        <% })} %>
+                </div>
+    </div>
+</body>
+
+</html>

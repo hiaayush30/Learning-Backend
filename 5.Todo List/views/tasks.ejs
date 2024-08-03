@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example page</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <!-- no need to specify path before stylesheets as path for static files set already -->
+</head>
+
+<body>
+    <div class="main">
+        <form action="/create" method="post">
+            <input name="title" style="padding: 5px; margin: 5px;" type="text" placeholder="title"><br>
+            <textarea name="desc" style="padding: 5px; margin: 5px; resize: none; border: radius 3px;"
+                placeholder="task details here"></textarea><br>
+            <button id="submit"
+                style="padding: 3px 5px;margin: 5px; color: white; background-color: blue; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+        </form>
+        <hr>
+        <div class="task" style=" padding: 10px;display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+            <% if(files.length>0){ %>
+                <% files.forEach(file=>{ %>
+                    <div style="width: 40vw; padding: 5px;background-color: #212121; border-radius: 5px;">
+                        <h1 style="color: white;">
+                            <%= file.split('.txt')[0] %>
+                        </h1>
+                        <div style="display: flex; justify-content: space-between;">
+                            <a href="/files/<%=file%>" style="margin: 1px; color: blue; text-decoration: none;">Read
+                                more...</a>
+                            <a href="/edit/<%=file%>" style="text-decoration: none; color: red;">Edit</a>
+                        </div>
+                    </div>
+                    <% })}else{ %>
+                        <h3 style="color: brown;">No tasks yet!</h3>
+                        <% }%>
+                            <!-- '='' used in ejs only when we want to print something -->
+        </div>
+    </div>
+</body>
+<script>
+    const button = document.getElementById('submit');
+    button.addEventListener('click', (e) => {
+        button.style.backgroundColor = 'red';
+    })
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit your post</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="h-screen w-screen bg-zinc-900">
+        <button class="fixeed top-0 rounded-md bg-red-500 px-2 py-1 m-5 hover:bg-red-600"><a href="/profile">Discard Changes</a></button>
+    <form action="/updatePost/<%= post._id %>" method="post" class=" gap-10 text-white flex flex-col items-center pt-20 border-2 rounded-md p-5">
+        <div>
+            <label class="mr-1">Imagee url:</label>
+            <input type="text" name="imgurl" value=<%= post.image_url%> class="rounded-md px-2 py-1 bg-transparent text-red-500">
+        </div>
+        <div>
+            <label class="mr-6">Caption:</label>
+            <input type="text" name="content" value=<%= post.content%> class="rounded-md px-2 py-1 bg-transparent text-red-500">
+        </div>
+        <div>
+            <input type="submit" value="Done" class="bg-red-500 px-2 py-1 cursor-pointer rounded-md hover:bg-red-600">
+        </div>
+    </form>
+    </div>
+</body>
+</html>

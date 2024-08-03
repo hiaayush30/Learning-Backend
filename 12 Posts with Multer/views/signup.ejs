@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="bg-zinc-900 text-white h-screen w-full text-2xl">
+        <header class="py-10 px-5">
+            <nav>
+                <ul>
+                    <a href="/login" class="hover:scale-125 hover:bg-zinc-800 transition-transform px-2 py-1 rounded">Login</a>
+                </ul>
+            </nav>
+        </header>
+        <form action="/signup" method="post" class="flex flex-col flex-wrap items-center gap-5">
+            <h1 class="py-5 text-3xl">Create Account</h1>
+            <input type="text" name="username" placeholder="username" class="p-1 rounded-md outline-none text-black">
+            <input type="text" name="email" placeholder="email" class="p-1 rounded-md outline-none text-black">
+            <input type="text" name="password" placeholder="password" class="p-1 rounded-md outline-none text-black">
+            <input type="submit" value="Sign-Up" class="cursor-pointer bg-red-500 rounded px-2 py-1 hover:bg-red-600">
+        </form>
+    </div>
+</body>
+</html>

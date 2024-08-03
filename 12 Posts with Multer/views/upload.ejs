@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <button class="absolute right-5 bg-blue-500 hover:bg-blue-400 px-2 py-1 rounded-md"><a href="/profile">Discard</a></button>
+    <h1 class="m-3 py-5 text-4xl">Upload Image</h1>
+    <form action="/upload" enctype="multipart/form-data" method="post">
+        <input type="file" name="profilepic" class="ml-5" />
+        <input type="submit" value="Upload" class="cursor-pointer bg-blue-500 hover:bg-blue-400 rounded-md px-2 py-1 text-white">
+    </form>
+</body>
+</html>

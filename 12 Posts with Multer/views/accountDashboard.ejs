@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.username%></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="bg-zinc-900 text-white h-screen w-full text-2xl">
+    <header class="py-10 px-5">
+        <nav>
+            <ul>
+                <a href="/logout" class="hover:scale-125 hover:bg-zinc-800 transition-transform px-2 py-1 rounded">Logout</a>
+            </ul>
+        </nav>
+    </header>
+    <h2>Hello <%= user.username%></h2>
+    </div>
+</body>
+</html>
