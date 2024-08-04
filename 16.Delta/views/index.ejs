@@ -6,6 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    Hello there!
+    <% if(message.length>0){ %>
+     <div style="display: flex; justify-content: center;">
+        <h3 style="text-align: center; border-radius: 5px; background-color: red;padding: 2px 5px;"><%=message%></h3>
+     </div>   
+     <%}%>
+    <h1>Hello there <%=name%>!</h1>
 </body>
 </html>

@@ -1,3 +1,4 @@
+//mock data and setting req headers
 const express=require('express');
 const users=require('./MOCK_DATA.json');
 const app=express();
