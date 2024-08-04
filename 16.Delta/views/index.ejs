@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <% if(message.length>0){ %>
-     <div style="display: flex; justify-content: center;">
-        <h3 style="text-align: center; border-radius: 5px; background-color: red;padding: 2px 5px;"><%=message%></h3>
-     </div>   
-     <%}%>
+        <div id="msgcontainer" style="display: flex; justify-content: center;">
+            <h3 style="text-align: center; border-radius: 5px; background-color: red;padding: 2px 5px;">
+                <%=message%>
+            </h3>
+        </div>
+        <%}%>
+    <% if(error.length>0){ %>
+        <div id="msgcontainer" style="display: flex; justify-content: center;">
+            <h3 style="text-align: center; border-radius: 5px; background-color: red;padding: 2px 5px;">
+                 <%=error%>
+            </h3>
+        </div>
+        <%}%>
     <h1>Hello there <%=name%>!</h1>
+    <script src="../javascripts/index.js"></script>
 </body>
+
 </html>

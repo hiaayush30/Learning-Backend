@@ -1,10 +1,12 @@
 //connect-flash
+const path=require('path');  
 const express = require('express');
 const users = require('./MOCK_DATA.json');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const connectflash=require('connect-flash');
 const app = express();
+app.use(express.static(path.join(__dirname,'public')));
 
 app.use(session({
     secret: "mysecretstring",
@@ -20,21 +22,35 @@ app.use(cookieParser('secretcode'));
 
 
 app.get('/register',(req,res)=>{
-    let {name="default"}=req.query
-    req.session.name=name;
-    console.log(req.session);
-    req.flash('msg','signed in successfully!');
-    res.redirect('/hello');
+    let {name="default"}=req.query;
+    if(name==='default'){
+        req.flash('error','username not set!');
+        res.redirect('/hello');
+    }else{
+        req.session.name=name;
+        console.log(req.session);
+        req.flash('msg','signed in successfully!');
+        res.redirect('/hello');
+    }
 })
 
+// app.use((req,res,next)=>{
+//     res.locals.message=req.flash('msg');
+//     res.locals.error=req.flash('error');
+// })
 app.get('/hello',(req,res)=>{
-    const message=req.flash('msg');
-    res.render('index',{message,name:req.session.name});
+    // const message=req.flash('msg');
+    // res.render('index',{message,name:req.session.name});
+
+    //or you can use res.locals(only with res.render)
+    res.locals.message=req.flash('msg');
+    res.locals.error=req.flash('error');
+    res.render('index',{name:req.session.name});
 })
 
 app.get('/', (req, res) => {
     res.cookie('color', 'red', { signed: true });
-    res.render('index');
+    res.redirect('/hello');
 });
 
 app.get('/verify', (req, res) => {
