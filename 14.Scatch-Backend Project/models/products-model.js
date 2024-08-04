@@ -5,7 +5,7 @@ const productSchema=new mongoose.Schema({
     name:String,
     price:Number,
     discount:{
-        type:Decimal128,
+        type:Number,
         default:0
     },
     bgcolor:String,
