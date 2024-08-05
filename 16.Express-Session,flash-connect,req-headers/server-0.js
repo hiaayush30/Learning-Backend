@@ -6,7 +6,7 @@ const app=express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 //parses the body whose request's header has form-urlencoded as it's content-type
-//(built-in header) and makes it availbale to us in req.body
+//(which is a built-in header) and makes it availbale to us in req.body
 
 app.get('/api/users',(req,res)=>{
     res.setHeader('X-creatorName','Aayush Jha'); //custom header

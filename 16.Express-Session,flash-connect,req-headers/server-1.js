@@ -1,4 +1,4 @@
-//Express Session and session storage
+//Signed Cookies,Express Session and session storage 
 const express = require('express');
 const users = require('./MOCK_DATA.json');
 const cookieParser = require('cookie-parser');

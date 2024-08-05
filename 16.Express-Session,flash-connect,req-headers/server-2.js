@@ -11,7 +11,8 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(session({
     secret: "mysecretstring",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    
 }))
 app.use(connectflash());
 
@@ -48,7 +49,7 @@ app.get('/hello',(req,res)=>{
     res.render('index',{name:req.session.name});
 })
 
-app.get('/', (req, res) => {
+app.get('/', (req, res) => {  
     res.cookie('color', 'red', { signed: true });
     res.redirect('/hello');
 });
