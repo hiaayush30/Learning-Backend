@@ -12,4 +12,6 @@ router.get('/:id',(req,res)=>{
     //userController.getUser();
 })
 
+router.route('/yo').post(/*myControllerFn*/).get(/*getController*/);
+
 module.exports=router;
