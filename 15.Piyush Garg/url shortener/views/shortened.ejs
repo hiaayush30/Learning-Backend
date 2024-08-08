@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Url Shortener</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="h-screen flex flex-col justify-center items-center gap-5 bg-zinc-900 text-white">
+        <h1 class="text-4xl">Yolo URL Shortener</h1>
+        <form onsubmit="event.preventDefault()">
+            <input id="linkBox" type="text" value=<%=link%> class="text-black px-2 py-1 rounded-md">
+            <button type="button" onclick="handleCopy()" id="copy"class="text-xl border bg-red-500 cursor-pointer px-2 py-1 rounded-md">Copy</button>
+        </form>
+    </div>
+    <script src="../javascripts/shortened.js"></script>
+</body>
+
+</html>
