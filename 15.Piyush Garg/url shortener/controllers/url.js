@@ -17,6 +17,8 @@ const handleNewShortUrl=async (req, res) => {
 const handleClickAnalytics=async (req,res)=>{
     const shortId=req.params.id;
     const entry=await Url.findOne({shortId});
-    res.json({clicks:entry.visitHistory.length})
+    res.json({clicks:entry.visitHistory.length,
+        analytics:entry.visitHistory
+    })
 }
 module.exports={handleNewShortUrl,handleClickAnalytics};
