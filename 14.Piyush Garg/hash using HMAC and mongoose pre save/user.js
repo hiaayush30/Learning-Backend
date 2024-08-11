@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { type } = require('node:os');
-const { createHmac, randomBytes } =require('node:crypto');
+const { createHmac, randomBytes } = require('node:crypto');
 
 
 const userSchema = new mongoose.Schema({
@@ -21,9 +21,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: '/images/default.jpeg'
     },
-    password:{
-        type:String,
-        required:true
+    password: {
+        type: String,
+        required: true
     },
     role: {
         type: String,
@@ -50,9 +50,26 @@ userSchema.pre('save', function (next) {
     // The createHmac function creates a Hash-based Message Authentication Code (HMAC) using the SHA-256
     // algorithm and the generated salt. The .update(user.password) method hashes the user's password 
     // with the salt, and .digest("hex") converts the hash into a hexadecimal string.
-    this.salt=salt;     //or user.salt as we have set user to point to this
-    this.password=hashed;
+    this.salt = salt;     //or user.salt as we have set user to point to this
+    this.password = hashed;
     next();
+})
+
+
+userSchema.static("matchPassword", async function (email, password) {
+    try {
+        const user = await this.findOne({ email });
+        if (!user) throw new Error('user not found!');
+        const salt = user.salt;
+        const hashedPassword = user.password;
+        const userProvidedPass = createHmac('sha256', salt)
+            .update(password)
+            .digest('hex');
+        if (hashedPassword === userProvidedPass) return { ...user._doc,password: undefined,salt: undefined };
+        else throw new Error('Incorrect password');
+    } catch (err) {
+        console.log(err.message);
+    }
 })
 
 const User = mongoose.model('User', userSchema);

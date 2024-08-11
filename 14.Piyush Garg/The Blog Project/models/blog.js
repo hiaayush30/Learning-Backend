@@ -11,7 +11,7 @@ const blogSchema=new mongoose.Schema({
     },
     coverImage:{
         type:String,
-        default:"/images/defaultProfile.jpeg"
+        default:"../images/defaultProfile.jpeg"
     },
     createdBy:{
         type:mongoose.Schema.Types.ObjectId,

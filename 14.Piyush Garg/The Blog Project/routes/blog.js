@@ -13,14 +13,21 @@ router.get('/create', validateUser, (req, res) => {
 
 router.post('/upload', validateUser, upload.single('coverImage'), async (req, res) => {
     const { title, description } = req.body;
-    console.log(req.file.filename.toString());
-    const blog = await Blog.create({
-        description,
-        title,
-        coverImage: req.file.filename,
-        createdBy: req.user._id
-    })
-    console.log('blog', blog);
+    if(req.file){
+        const blog = await Blog.create({
+            description,
+            title,
+            coverImage: req.file.filename,
+            createdBy: req.user._id
+        })
+    }else{
+        const blog = await Blog.create({
+            description,
+            title,
+            createdBy: req.user._id
+        })
+        console.log(blog);
+    }
     res.redirect('/');
 })
 
