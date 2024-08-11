@@ -3,7 +3,9 @@
 
 <head>
     <%- include('./partials/head')%>
-        <title><%=blog.title%></title>
+        <title>
+            <%=blog.title%>
+        </title>
 </head>
 
 <body>
@@ -18,11 +20,34 @@
                         <pre class="card-text">
                             <%=blog.description%>
                         </pre>
+                        <%if(blog.createdBy._id==user._id){%>
                         <a href="" class="btn btn-primary">Edit</a>
                         <a href="/blog/delete/<%=blog._id%>" class="btn btn-primary">Delete</a>
+                        <%}%>
                     </div>
                 </div>
             </div>
+            <div>
+                <img src="../..<%=user.profileImageUrl%>" alt="User"
+                    style="object-fit: cover; height: 100px;width: 100px; border-radius: 50%;">
+                <%=blog.createdBy.name%>
+            </div>
+            <%if(locals.user){%>
+                <form style="margin-left: 20px;" action="/blog/postComment/<%=blog._id%>" method="post">
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Add Comment</label>
+                      <input type="text" name="body" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>   
+            <%}%>
+            <%comments.map((comment)=>{%>
+                <div style="display: flex; align-items: center;">
+                    <img src="../..<%=comment.createdBy.profileImageUrl%>" style="height: 50px; width: 50px;">
+                    <p><b><%=comment.createdBy.name%>:</b></p>
+                    <p><%=comment.body%></p>
+                </div>
+            <%})%>
 </body>
 
 </html>

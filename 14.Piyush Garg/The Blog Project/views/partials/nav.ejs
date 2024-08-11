@@ -7,12 +7,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <% if (user) { %>
+        <% if (locals.user){ %>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/blog/view">Your Blogs</a>
+            <a class="nav-link active" aria-current="page" href="/blog/viewMyBlogs">Your Blogs</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/blog/create">Add Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog/viewAll">All Blogs</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,14 +26,17 @@
             </ul>
           </li>
           <%}%>
-            <% if (!user) { %>
+            <% if (!locals.user) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/viewAll">All Blogs</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/user/signin">Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/user/signup">Create Account</a>
               </li>
-              <%}%>
+            <%}%>
       </ul>
     </div>
   </div>
