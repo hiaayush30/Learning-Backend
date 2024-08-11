@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head')%>
+        <title>Homepage</title>
+</head>
+
+<body>
+    <%- include('./partials/scripts')%>
+        <div style="background-color: #212121; height: 100vh;">
+            <%- include('./partials/nav')%>
+                <h1 style="text-align: center;margin-top: 10px; color: white;">Blogify-blog away!</h1>
+                <% if (user){ %>
+                    <div style="display: flex;flex-direction: column;gap: 20px; justify-content: center; align-items: center; height: 50vh;">
+                        <div style="height: 150px; width: 150px; background-color: red;border-radius: 50%;">
+                            <img src="..<%=user.profileImageUrl%>" alt="User" style="object-fit: cover; height: 150px;width: 150px; border-radius: 50%;">
+                        </div>
+                        <!-- <button style="border-radius: 5px;"><a href="" style="text-decoration: none;">Edit Profile Pic</a></button> -->
+                    </div>
+                    <%}%>
+        </div>
+</body>
+
+</html>

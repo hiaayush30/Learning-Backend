@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head')%>
+        <title><%=blog.title%></title>
+</head>
+
+<body>
+    <%- include('./partials/scripts')%>
+        <%- include('./partials/nav')%>
+            <div style="display: flex; justify-content: space-around; margin-top: 10px; flex-wrap: wrap;">
+                <div class="card" style="width: 50rem; text-align: center;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=blog.title%>
+                        </h5>
+                        <pre class="card-text">
+                            <%=blog.description%>
+                        </pre>
+                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="/blog/delete/<%=blog._id%>" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            </div>
+</body>
+
+</html>

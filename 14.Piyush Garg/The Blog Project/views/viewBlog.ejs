@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head')%>
+    <title>View Blogs</title>
+</head>
+<body>
+    <%- include('./partials/scripts')%>
+    <%- include('./partials/nav')%>
+    <div style="display: flex; justify-content: space-around; padding-top: 10px; flex-wrap: wrap; background-color: #212121; min-height: 90vh;">
+        <% if (blogs.length==0){%>
+            <div style="color: white;">You have not created any blogs!</div>
+            <%}%>
+        <% blogs.map((blog)=>{ %>
+            <div class="card" style="width: 18rem; height: 20rem;text-align: center;">
+                <img src="../uploads/<%=blog.coverImage%>" class="card-img-top" alt="img">
+                <div class="card-body">
+                  <h5 class="card-title"><%=blog.title%></h5>
+                  <p class="card-text"><%=blog.description.substring(0,30)%>...</p>
+                  <a href="/blog/view/<%=blog._id%>" class="btn btn-primary">Read More</a>
+                </div>
+              </div>
+    
+        <%})%>
+    </div>
+</body>
+</html>
