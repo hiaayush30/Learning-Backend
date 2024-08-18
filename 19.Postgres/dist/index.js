@@ -99,7 +99,10 @@ FROM users
 JOIN addresses ON users.id = addresses.user_id
 WHERE users.id = '1';`; //can remove this line to get all users with their addresses
     yield client.query(query)
-        .then((response) => console.log(response.rows))
+        .then((response) => {
+        console.log(response.rows);
+        client.end();
+    })
         .catch(err => console.log(err));
 });
 learningJoins();
